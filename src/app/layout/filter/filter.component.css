@@ -1,0 +1,56 @@
+.cont {
+    border-radius: 20px;
+    padding: 30px;
+    -webkit-box-shadow: 8px 10px 18px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 10px 18px -7px rgba(66, 68, 90, 1);
+    box-shadow: 8px 10px 18px -7px rgba(66, 68, 90, 1);
+    max-width: 600px;
+    min-width: 400px;
+    width: 50vw;
+}
+
+.cont-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.toggler {
+    transition: 0.3s ease;
+    cursor: pointer;
+    rotate: 0deg;
+    position: relative;
+    background-color: unset;
+    border: none;
+}
+
+.shadow-div {
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    text-align: center;
+    -webkit-box-shadow: 4px 4px 12px -5px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 4px 4px 12px -5px rgba(66, 68, 90, 1);
+    box-shadow: 4px 4px 12px -5px rgba(66, 68, 90, 1);
+}
+
+.arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+}
+
+.up {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+}
+
+.down {
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+}
+
+.btn {
+    float: right;
+}

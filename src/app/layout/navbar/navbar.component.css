@@ -1,0 +1,277 @@
+.nav {
+    position: fixed;
+    width: 100vw;
+    padding: 0;
+    z-index: 100;
+    pointer-events: none;
+}
+
+.nav>*, .dropdown-cont > * {
+    pointer-events: all;
+}
+
+.contact {
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0);
+    margin-left: auto;
+    height: 40px;
+    color: white;
+    padding-right: 40px;
+}
+
+.contact-cont {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 40px;
+    width: 100vw;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.language-change-but {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.img-fluid {
+    border-radius: 50%;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    transition: 0.3s ease;
+}
+
+.icon:hover {
+    transform: rotate(45deg);
+}
+
+.cont,
+.cont-scroll {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    height: 60px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.5s ease;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.cont-scroll {
+    background-color: white;
+}
+
+.logo {
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    height: 60px;
+}
+
+.menu-but,
+.menu-but-scroll,
+.reservation-but,
+.reservation-but-scroll {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    color: rgba(255, 255, 255, 0.582);
+    transition: 0.5s ease;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+}
+
+.menu-but:hover {
+    color: white;
+}
+
+.reservation-but:hover {
+    color: white;
+    border: 1px white solid;
+}
+
+.reservation-but,
+.reservation-but-scroll {
+    border: 1px rgba(255, 255, 255, 0.582) solid;
+    border-radius: 40px;
+    width: 150px;
+    height: 40px;
+    margin-top: 10px;
+    white-space: nowrap;
+}
+
+.reservation-but-scroll {
+    border: 1px black solid;
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
+}
+
+.menu-but-scroll {
+    color: black;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0);
+}
+
+.reservation-but-scroll:hover {
+    border: 1px gray solid;
+    color: gray;
+}
+
+.menu-but-scroll:hover {
+    color: gray;
+}
+
+h5 {
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .menu {
+        display: none;
+    }
+
+    .reservation-but {
+        margin-left: auto;
+    }
+}
+
+.hamburger,
+.hamburger2,
+.hamburger3 {
+    width: 60px;
+    height: 60px;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.hamburger2 {
+    margin-left: auto;
+    display: flex;
+}
+
+.line,
+.line1,
+.line2,
+.line-scroll {
+    display: block;
+    height: 4px;
+    width: 35px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.582);
+    margin: 4px;
+    transition: 0.5s ease;
+    pointer-events: none;
+}
+
+.line-scroll {
+    background: black;
+}
+
+.line1 {
+    background: black;
+    transform-origin: center;
+    transform: translateY(6px) rotate(-45deg);
+}
+
+.line2 {
+    background: black;
+    transform-origin: center;
+    transform: translateY(-6px) rotate(45deg);
+}
+
+.hamburger:hover>* {
+    background: white;
+}
+
+.hamburger2:hover>*,
+.hamburger3:hover>* {
+    background: gray;
+}
+
+.dropdown {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    width: 300px;
+    height: 100vh;
+    background-color: white;
+    transition: 0.5s ease;
+    z-index: 100;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    -webkit-box-shadow: 3px 8px 24px 0px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 3px 8px 24px 0px rgba(66, 68, 90, 1);
+    box-shadow: 3px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.menu2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 30px;
+}
+
+.menu2-but {
+    color: black;
+    border: none;
+    background-color: unset;
+    transition: 0.5s ease;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.menu2-but:hover {
+    color: gray;
+}
+
+@media (min-width: 1001px) {
+    .hamburger {
+        display: none;
+    }
+
+    .dropdown {
+        display: none;
+    }
+}
+
+.logo-dropdown {
+    margin-right: auto;
+    width: 100px;
+    height: auto;
+}
+
+.dropdown-cont {
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+}
+
+.user-email {
+    display: flex;
+}

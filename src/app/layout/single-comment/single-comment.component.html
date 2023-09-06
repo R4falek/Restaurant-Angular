@@ -1,0 +1,7 @@
+<div class="cont mt-3 mb-3" *ngIf="commentData">
+    <div class="cont-nick-date">
+        <h3>{{commentData.nick}}</h3>
+        <h5 class="date">{{commentData.date.toMillis() | date}}</h5>
+    </div>
+    <p>{{commentData.comment}}</p>
+</div>

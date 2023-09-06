@@ -1,0 +1,49 @@
+<div class='nav'>
+    <div class="contact-cont" [ngStyle]="{'top': hideNav}" #nav>
+        <div class="user-email">
+            <h5 class="mt-2">{{userEmail}}</h5>
+            <button class="menu-but" routerLink="/cart">Koszyk {{priceSum | currency: 'PLN '}}</button>
+        </div>
+        <div class="contact">
+            <a href="https://www.facebook.com/" target="_blank"><img class="icon" src="assets/fb-icon.png" alt=""></a>
+            <a href="https://www.instagram.com/" target="_blank"><img class="icon" src="assets/ig-icon.png" alt=""></a>
+            <a href="https://www.tripadvisor.com/" target="_blank"><img class="icon" src="assets/ta-icon.png" alt=""></a>
+            <a [href]="'tel:' + phoneNumber"><img class="icon" src="assets/ph-icon.png" alt=""></a>
+            <h6 class="mt-2">REZERWACJA 333 333 333</h6>
+            <div class="language-change-but">
+                <img class="img-fluid" src="https://m.media-amazon.com/images/I/71FSpWEF4PL._AC_UF1000,1000_QL80_.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="cont" [ngStyle]="{'top': hideNav, 'background-color': chageNavStyle ? 'white' : 'rgba(0, 0, 0, 0)'}">
+        <img [src]="logoURL" class="logo" alt="" routerLink="/">
+        <div class="menu">
+            <button class="menu-but" [ngClass]="{'menu-but-scroll': chageNavStyle}" routerLink="/">Strona główna</button>
+            <button class="menu-but" [ngClass]="{'menu-but-scroll': chageNavStyle}" routerLink="/menu">Menu</button>
+            <button class="menu-but" [ngClass]="{'menu-but-scroll': chageNavStyle}" routerLink="/contact">Kontakt</button>
+            <button *ngIf="userData?.role=='admin'" class="menu-but" [ngClass]="{'menu-but-scroll': chageNavStyle}" routerLink="/dashboard">Panel administratora</button>
+        </div>
+        <button class="reservation-but" [ngClass]="{'reservation-but-scroll': chageNavStyle}" routerLink="/login" (click)="onLogOut()">{{!isLoggedIn ? 'Zaloguj się' : 'Wyloguj się'}}</button>
+        <div [ngClass]="{'hamburger3': chageNavStyle}" class="hamburger" (click)="hamburgerToggle()">
+            <span [ngClass]="{'line-scroll': chageNavStyle}" class="line"></span>
+            <span [ngClass]="{'line-scroll': chageNavStyle}" class="line"></span>
+            <span [ngClass]="{'line-scroll': chageNavStyle}" class="line"></span>
+        </div>
+    </div>
+</div> 
+
+<div class="dropdown" [ngStyle]="{right: isHamburgerToggled ? '0' : '-320px'}">
+    <div class="dropdown-cont">
+        <img src="assets/logo-black.png" class="logo-dropdown" alt="" routerLink="/">
+        <div class="hamburger2" (click)="hamburgerToggle()">
+            <span class="line1"></span>
+            <span class="line2"></span>
+        </div>
+    </div>
+    <div class="menu2">
+        <button class="menu2-but" routerLink="/">Strona główna</button>
+        <button class="menu2-but" routerLink="/menu">Menu</button>
+        <button class="menu2-but" routerLink="/contact">Kontakt</button>
+        <button *ngIf="userData?.role=='admin'" class="menu2-but" routerLink="/dashboard">Panel administratora</button>
+    </div>
+</div>

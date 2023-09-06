@@ -1,0 +1,53 @@
+<div class="bg">
+    <div class="login-form-cont">
+        <form  *ngIf="formStatus=='Zaloguj'" [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit(loginForm.value)">
+            <h1 style="text-align: center;">{{formStatus}} się</h1>
+            <div class="form-group mt-5">
+                <label for="">Adres email</label>
+                <input formControlName="email" [ngClass]="{'is-invalid': fc.email.touched && fc.email.invalid}"  
+                    class="form-control mt-2" type="email" >
+                <div class="alert alert-danger" *ngIf="fc.email.touched && fc.email.invalid">
+                    <div *ngIf="fc.email.errors?.['required']">Proszę podać adres email</div>
+                    <div *ngIf="fc.email.errors?.['email']">Proszę podać poprawny adres email</div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Hasło</label>
+                <input formControlName="password" [ngClass]="{'is-invalid': fc.password.touched && fc.password.invalid}"
+                    class="form-control mt-2" type="password">
+                <div class="alert alert-danger" *ngIf="fc.password.touched && fc.password.invalid">Proszę podać hasło</div>
+            </div>
+            <button class="mt-3 btn btn-info" [disabled]="loginForm.invalid">{{formStatus}}</button>
+        </form>
+        
+        <form  *ngIf="formStatus=='Zarejestruj'" [formGroup]="registerForm" class="login-form" (ngSubmit)="onSubmit(registerForm.value)">
+            <h1 style="text-align: center;">{{formStatus}} się</h1>
+            <div class="form-group mt-5">
+                <label for="">Adres email</label>
+                <input formControlName="email" [ngClass]="{'is-invalid': fcRegister.email.touched && fcRegister.email.invalid}"  
+                    class="form-control mt-2" type="email" >
+                <div class="alert alert-danger" *ngIf="fcRegister.email.touched && fcRegister.email.invalid">
+                    <div *ngIf="fcRegister.email.errors?.['required']">Proszę podać adres email</div>
+                    <div *ngIf="fcRegister.email.errors?.['email']">Proszę podać poprawny adres email</div>
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Hasło</label>
+                <input formControlName="password" [ngClass]="{'is-invalid': fcRegister.password.touched && fcRegister.password.invalid}"
+                    class="form-control mt-2" type="password">
+                <div class="alert alert-danger" *ngIf="fcRegister.password.touched && fcRegister.password.invalid">Proszę podać hasło</div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Potwierdź hasło</label>
+                <input formControlName="passwordCheck" [ngClass]="{'is-invalid': fcRegister.passwordCheck.touched && fcRegister.passwordCheck.invalid}"
+                    class="form-control mt-2" type="password">
+                <div class="alert alert-danger" *ngIf="fcRegister.passwordCheck.touched && fcRegister.passwordCheck.invalid">
+                    <div *ngIf="fcRegister.passwordCheck.errors?.['required']">Proszę ponownie podać hasło</div>
+                    <div *ngIf="fcRegister.passwordCheck.errors?.['passwordsMatchValidator'] && !fcRegister.passwordCheck.errors?.['required']">Hasła muszą być identyczne</div>
+                </div>
+            </div>
+            <button class="mt-3 btn btn-info" [disabled]="registerForm.invalid">{{formStatus}}</button>
+        </form>
+        <button class="mt-3 btn btn-warning" (click)="registerToggle()">{{formStatus=='Zaloguj' ? 'Zarejestruj się' : 'Powrót do logowania'}}</button>
+    </div>
+</div>

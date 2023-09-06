@@ -1,0 +1,15 @@
+<div class="cont" [routerLink]="['/dish', dishData.id]" >
+    <div class="image" #image>
+        <!-- <img [src]="dishData.image"
+            alt=""> -->
+    </div>
+    <div class="description">
+        <h4>{{dishData.name}}</h4>
+        <p>{{dishData.description}}</p>
+        <div class="small-cont">
+            <small *ngIf="dishData.rating.length > 0" class="bg-light text-warning rate" >Ocena: {{meanRate}}</small>
+            <small class="bg-light text-info price" >Cena: {{dishData.price | currency:'PLN '}}</small>
+        </div>
+       
+    </div>
+</div>

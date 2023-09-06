@@ -1,0 +1,54 @@
+.front-image {
+    height: 500px;
+    overflow: hidden;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    background: url('src\\assets\\cart.jpg');
+}
+
+.front-text {
+    position: absolute;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 410px;
+    z-index: 10;
+    color: white;
+}
+
+.front-text > * {
+    opacity: 0;
+    transition: 1s ease;
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 50px;
+}
+
+.shadow-text {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+hr {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cont {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.btn {
+    width: 100px;
+}

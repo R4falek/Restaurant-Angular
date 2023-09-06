@@ -1,0 +1,21 @@
+<form class="form mb-5" #commentsForm="ngForm" (ngSubmit)="onSubmit(commentsForm)">
+    <h1>Dodaj komentarz</h1>
+    <div class="form-group mt-3">
+        <label for="">Nazwa</label>
+        <input disabled (value)="nick" [(ngModel)]="nick" class="form-control mt-1" type="text" name="nick" id="">
+    </div>
+    <div class="form-group mt-3">
+        <label for="">Opinia</label>
+        <textarea [ngClass]="{'is-invalid': Opinion.touched && Opinion.invalid}" required minlength="10" ngModel class="form-control mt-1" name="opinion" cols="30" rows="5" #Opinion="ngModel"></textarea>
+        <div class="alert alert-danger" *ngIf="Opinion.touched && Opinion.invalid">
+            <div *ngIf="Opinion.errors?.['required']">Treść jest wymagana</div>
+            <div *ngIf="Opinion.errors?.['minlength']">Treść musi mieć conajmniej 10 znaków</div>
+        </div>
+    </div>
+    <button class="btn btn-info mt-3" [disabled]="commentsForm.invalid">Dodaj</button>
+</form>
+
+<div *ngFor="let comment of commentArray">
+    <app-single-comment [commentData]="comment"></app-single-comment>
+</div>
+

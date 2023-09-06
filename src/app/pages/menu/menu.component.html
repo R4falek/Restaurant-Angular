@@ -1,0 +1,22 @@
+<div class="front-image">
+    <div class="front-text text-center" #frontText>
+        <h1>Poznaj Nasze Menu</h1>
+        <h2>Nowoczesne dania z lokalnych produktów</h2>
+    </div>
+</div>
+<app-filter #filter class="cont mt-5 mb-0" [dishArray]="dishArray"></app-filter>
+<hr>
+<div class="dish-cont">
+    <div *ngFor="let dish of (dishArray | filter:filter.formValues.name
+    :filter.formValues.priceMin
+    :filter.formValues.priceMax
+    :filter.formValues.category
+    :filter.formValues.cuisine
+    :filter.formValues.rating
+    | paginate: { itemsPerPage: 10, currentPage: pageNumber })">
+        <app-dish [dishData]="dish"></app-dish>
+    </div>
+</div>
+<pagination-controls class="text-center mb-3" (pageChange)="pageNumber = $event"
+previousLabel="Poprzednia"
+  nextLabel="Następna"></pagination-controls>

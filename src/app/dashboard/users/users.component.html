@@ -1,0 +1,29 @@
+<div class="user-cont" *ngIf="userArray">
+    <div class="table-cont" *ngIf="userArray.length > 0; else noData">
+        <table class="table row-border hover">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Email</th>
+                    <th>Rola</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of userArray; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ user.email }}</td>
+                    <td width="100">{{ user.role }}</td>
+                    <td>
+                        <button (click)="onEditRole(user)" class="btn btn-warning" style="margin-right: 10px;">{{user.role=='admin' ? 'User' : 'Admin'}}</button>
+                        <button (click)="onDeleteData(user)" class="btn btn-danger">Usuń dane</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #noData>
+        <h1 class="mt-4 mb-5">Nie ma dań do pokazania ...</h1>
+    </ng-template>
+</div>

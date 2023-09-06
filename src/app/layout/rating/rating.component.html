@@ -1,0 +1,14 @@
+<div class="rating-cont mb-5">
+    <div class="cont">
+        <h3>Oceń danie</h3>
+        <igc-rating class="stars-cont" value="0" min="1" max="5" (igcChange)="ratingChanged($event);" [disabled]="isRated"></igc-rating>
+    </div>
+    <div class="cont">
+        <h3 *ngIf="meanRate!=-1; else noData">{{meanRate | number:'1.0-2'}}/5</h3>
+        <button (click)="onSubmit()" class="btn btn-info mt-2" [disabled]="isRated || rate==0">Dodaj ocenę</button>
+    </div>
+</div>
+
+<ng-template #noData>
+    <h4>Brak ocen</h4>
+</ng-template>

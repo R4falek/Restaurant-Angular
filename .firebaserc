@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "restaurant-62c1a": {
+      "hosting": {
+        "Restaurant-fixed": [
+          "restaurant-62c1a"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "restaurant-62c1a"
+  }
+}

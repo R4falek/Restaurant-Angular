@@ -1,0 +1,66 @@
+<div class="front-image">
+    <div class="front-text text-center">
+        <h1 #FrontText class="shadow-text">Koszyk</h1>
+        <h2 #Price class="shadow-text">{{sumPrice | currency: 'PLN '}}</h2>
+        <button #BuyButton class="btn btn-info text-center mt-3" *ngIf="cart.length > 0" (click)="buy()">Kup</button>
+    </div>
+</div>
+
+<div class="cont mt-5">
+    <table class="table row-border hover mb-5 text-center" *ngIf="cart.length > 0; else CartEmpty">
+        <thead>
+            <tr>
+                <th>Nr</th>
+                <th>Nazwa</th>
+                <th>Zamówiona liczba</th>
+                <th>Cena</th>
+                <th>Data</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cart; let i = index">
+                <td>{{ i+1 }}</td>
+                <td>{{ item[1].dishName }}</td>
+                <td>{{ item[1].orderedCount }}</td>
+                <td>{{ item[1].priceSum | currency: 'PLN '}}</td>
+                <td>{{ item[1].date | date }}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="removeFromCart(item)">Usuń</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <ng-template #CartEmpty>
+        <h2 class="text-center mb-5">Koszyk jest pusty ...</h2>
+    </ng-template>
+    
+    <hr>
+
+        <table class="table row-border hover mt-5 text-center mb-5" *ngIf="userData && userData.history.length>0; else HistoryEmpty">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Nazwa</th>
+                    <th>Zamówiona liczba</th>
+                    <th>Cena</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userData.history; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td>{{ item.dishName }}</td>
+                    <td>{{ item.orderedCount }}</td>
+                    <td>{{ item.priceSum | currency: 'PLN '}}</td>
+                    <td>{{ item.date.seconds * 1000 + item.date.nanoseconds / 1000000 | date:'dd/MM/yyyy, h:mm a' }}</td>
+                </tr>
+            </tbody>
+        </table>
+    
+    
+    <ng-template #HistoryEmpty>
+        <h2 class="text-center mt-5 mb-5">Historia jest pusta ...</h2>
+    </ng-template>
+</div>

@@ -1,0 +1,48 @@
+<div class="cont">
+    <div class="cont-toggle">
+        <h3>Filtr</h3>
+        <div class="shadow-div">
+            <button [ngClass]="{'down': isFilterToggled}" (click)="filterToggle()" class="toggler" #filterToggler>
+                <i class="arrow up"></i>
+            </button>
+        </div>
+
+    </div>
+    <div class="filtr-cont" *ngIf="isFilterToggled">
+        <form #filterForm="ngForm" (ngSubmit)="onSubmit()">
+            <div class="form-floating mt-5">
+                <input [(ngModel)]="formValues.name" class="form-control" type="text" placeholder="Nazwa" name="name" id="">
+                <label for="">Nazwa</label>
+            </div>
+            <div>
+                <div class="form-group mt-3">
+                    <label for="">Cena minimalna {{formValues.priceMin | currency: 'PLN'}}</label>
+                    <input [(ngModel)]="formValues.priceMin" class="form-range" type="range" name="priceMin" [min]="priceMin" [max]="priceMax" step="0.01">
+                </div>
+                <div class="form-group mt-3">
+                    <label for="">Cena maksymalna {{formValues.priceMax | currency: 'PLN'}}</label>
+                    <input [(ngModel)]="formValues.priceMax" class="form-range" type="range" name="priceMax" id="" [min]="priceMin" [max]="priceMax" step="0.01">
+                </div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Kategoria</label>
+                <select [(ngModel)]="formValues.category" class="form-select mt-1" name="category" id="">
+                    <option value="" selected disabled></option>
+                    <option *ngFor="let option of categoryOptions" [value]="option">{{option}}</option>
+                </select>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Kuchnia</label>
+                <select [(ngModel)]="formValues.cuisine" class="form-select mt-1" name="cuisine">
+                    <option value="" selected disabled></option>
+                    <option *ngFor="let option of cuisineOptions" [value]="option">{{option}}</option>
+                </select>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Ocena {{formValues.rating != 0? formValues.rating : ''}}</label>
+                <input [(ngModel)]="formValues.rating" class="form-range" type="range" name="rating" min="0" max="5" step="1" id="">
+            </div>
+            <button class="btn btn-info mt-3">Wyczyść filtry</button>
+        </form>
+    </div>
+</div>

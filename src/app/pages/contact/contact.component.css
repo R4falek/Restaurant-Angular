@@ -1,0 +1,64 @@
+.front-image {
+    height: 500px;
+    overflow: hidden;
+    z-index: 1;
+    background-image: url('src\\assets\\contact.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    font-size: 70px;
+    margin-bottom: 50px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.front-text {
+    position: absolute;
+    top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 410px;
+    z-index: 10;
+    color: white;
+}
+
+.front-text > * {
+    opacity: 0;
+    transition: 1s ease;
+}
+
+.cont {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100vw;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.cont-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+hr {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}

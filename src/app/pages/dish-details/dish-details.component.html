@@ -1,0 +1,32 @@
+<div>
+    <div class="front-image" #Image>
+        <div class="front-text text-center" *ngIf="dishDetails">
+            <h1 class="shadow-text">{{dishDetails.name}}</h1>
+        </div>
+    </div>
+
+    <div class="cont pt-4 pb-5" *ngIf="dishDetails">
+        <div class="cont-det mb-5 text-center">
+            <h1 class="mb-5">{{dishDetails.name}}</h1>
+            <div class="cart-cont mb-5">
+                <h4>Cena {{dishDetails.price | currency:'PLN '}}</h4>
+                <div class="add-cont mb-2">
+                    <button class="btn btn-info" (click)="removeFromCart()" [disabled]="orderedCount==0">Usuń</button>
+                    <h5>{{orderedCount}}</h5>
+                    <button class="btn btn-info" (click)="addToCart()" [disabled]="orderedCount==howManyLeft">Dodaj</button>
+                </div>
+                <h6>Dodaj do koszyka</h6>
+            </div>
+
+            <h2 class="mb-5">{{dishDetails.ingredients}}</h2>
+            <h5>{{dishDetails.category}}</h5>
+            <h5>Kuchnia {{dishDetails.cuisine}}</h5>
+            <p class="mt-5">{{dishDetails.description}}</p>
+        </div>
+
+        <app-rating [dishDetails]="dishDetails" [id]="id"></app-rating>
+        <app-comments [id]="id"></app-comments>
+    </div>
+
+
+</div>

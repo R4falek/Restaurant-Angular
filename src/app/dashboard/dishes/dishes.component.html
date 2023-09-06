@@ -1,0 +1,101 @@
+<div class="dish-cont" *ngIf="dishArray">
+    <form #addDishForm="ngForm" class="dish-form" (ngSubmit)="onSubmit(addDishForm)">
+        <h1 style="text-align: center;">{{formStatus}} danie</h1>
+        <div class="form-group mt-3">
+            <label for="">Nazwa</label>
+            <input [ngClass]="{'is-invalid': Name.touched && Name.invalid}" [(ngModel)]="selectedDish.name" #Name="ngModel"
+                class="form-control mt-1" type="text" name="name" required>
+            <div class="alert alert-danger" *ngIf="Name.touched && Name.invalid">Nazwa jest wymagana</div>
+        </div>
+        <div class="row-cont">
+            <div class="form-group mt-3">
+                <label for="">Kuchnia</label>
+                <input [ngClass]="{'is-invalid': Cuisine.touched && Cuisine.invalid}" [(ngModel)]="selectedDish.cuisine" #Cuisine="ngModel"
+                    class="form-control mt-1" type="text" name="cuisine" required>
+                <div class="alert alert-danger" *ngIf="Cuisine.touched && Cuisine.invalid">Kuchnia jest wymagana</div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Kategoria</label>
+                <input [ngClass]="{'is-invalid': Category.touched && Category.invalid}" [(ngModel)]="selectedDish.category" #Category="ngModel"
+                    class="form-control mt-1" type="text" name="category" required>
+                <div class="alert alert-danger" *ngIf="Category.touched && Category.invalid">Kategoria jest wymagana</div>
+            </div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="">Opis</label>
+            <textarea cols="30" rows="3" [ngClass]="{'is-invalid': Description.touched && Description.invalid}" [(ngModel)]="selectedDish.description" #Description="ngModel"
+                class="form-control mt-1" type="text" name="description" required maxlength="200"></textarea>
+            <div class="alert alert-danger" *ngIf="Description.touched && Description.invalid">Opis jest wymagany</div>
+        </div>
+        <div class="form-group mt-3">
+            <label for="">Składniki</label>
+            <textarea cols="30" rows="2" [ngClass]="{'is-invalid': Ingredients.touched && Ingredients.invalid}" [(ngModel)]="selectedDish.ingredients" #Ingredients="ngModel"
+                class="form-control mt-1" type="text" name="ingredients" required></textarea>
+            <div class="alert alert-danger" *ngIf="Ingredients.touched && Ingredients.invalid">Składniki są wymagane</div>
+        </div>
+        <div class="row-cont">
+            <div class="form-group mt-3">
+                <label for="">Cena</label>
+                <input [ngClass]="{'is-invalid': Price.touched && Price.invalid}" [(ngModel)]="selectedDish.price" #Price="ngModel"
+                    class="form-control mt-1" type="number" name="price" required>
+                <div class="alert alert-danger" *ngIf="Price.touched && Price.invalid">Cena jest wymagana</div>
+            </div>
+            <div class="form-group mt-3">
+                <label for="">Liczba sztuk</label>
+                <input [ngClass]="{'is-invalid': HowManyLeft.touched && HowManyLeft.invalid}" [(ngModel)]="selectedDish.howManyLeft" #HowManyLeft="ngModel"
+                    class="form-control mt-1" type="number" name="howManyLeft" value="nullValue" required>
+                <div class="alert alert-danger" *ngIf="HowManyLeft.touched && HowManyLeft.invalid">Liczba sztuk jest wymagana</div>
+            </div>
+        </div>
+        <div class="image-cont">
+            <div class="form-group mt-3" style="width: 400px;">
+                <label for="">Zdjęcie</label>
+                <input (change)="showPreview($event)" [ngClass]="{'is-invalid': ImageUrl.touched && ImageUrl.invalid}" [(ngModel)]="selectedDish.image" #ImageUrl="ngModel"
+                    class="form-control mt-1" type="text" name="image" required>
+                <div class="alert alert-danger" *ngIf="ImageUrl.touched && ImageUrl.invalid">Zdjęcie jest wymagane</div>
+            </div>
+            <img [src]="previewImageUrl" alt="" class="previewImage mt-5">
+        </div>
+        
+        <button *ngIf="formStatus=='Edytuj'" class="btn btn-warning mt-3" (click)="onCancel(addDishForm)">Powrót do dodawania</button>
+        <button class="btn btn-info mt-3" [disabled]="addDishForm.invalid">{{formStatus}}</button>
+    </form>
+
+    <hr>
+
+    <div class="table-cont" *ngIf="dishArray.length > 0; else noData">
+        <table class="table row-border hover">
+            <thead>
+                <tr>
+                    <th>Nr</th>
+                    <th>Zdjęcie</th>
+                    <th>Nazwa</th>
+                    <th>Cena</th>
+                    <th>Kuchnia</th>
+                    <th>Kategoria</th>
+                    <th>Liczba dań</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dish of dishArray; let i = index">
+                    <td>{{ i+1 }}</td>
+                    <td width="30"><img class="img img-fluid rounded" [src]="dish.image" alt=""></td>
+                    <td>{{ dish.name }}</td>
+                    <td>{{dish.price | currency: 'PLN '}}</td>
+                    <td>{{dish.cuisine}}</td>
+                    <td>{{dish.category}}</td>
+                    <td>{{dish.howManyLeft}}</td>
+                    <td>
+                        <button (click)="onEdit(dish)" class="btn btn-warning" style="margin-right: 10px">Edytuj</button>
+                        <button (click)="onDelete(dish)" class="btn btn-danger">Usuń</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <ng-template #noData>
+        <h1 class="mt-4 mb-5">Nie ma dań do pokazania ...</h1>
+    </ng-template>
+</div>

@@ -1,0 +1,7 @@
+<div class="cont">
+    <google-map height="500px" width="100vw" [center]="center" [zoom]="zoom" (mapClick)="moveMap($event)"
+        (mapMousemove)="move($event)">
+        <map-marker *ngFor="let markerPosition of markerPositions" [position]="markerPosition"
+            [options]="markerOptions"></map-marker>
+    </google-map>
+</div>
